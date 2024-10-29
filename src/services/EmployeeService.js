@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const EMPLOYEE_BASE_REST_API_URL = 'libmanagement-backend-production.up.railway.app/api/v1/employees';
+const EMPLOYEE_BASE_REST_API_URL = 'https://libmanagement-backend-production.up.railway.app/api/v1/employees';
 
 // http://localhost:8080/api/v1/employees
 
