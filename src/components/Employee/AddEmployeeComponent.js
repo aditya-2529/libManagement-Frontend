@@ -1,19 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import {Link, useNavigate, useParams } from 'react-router-dom';
-import EmployeeService from '../services/EmployeeService'
+import EmployeeService from '../../services/Employee/EmployeeService'
 
 const AddEmployeeComponent = () => {
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [emailId, setEmailId] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
     const navigate = useNavigate();
     const {id} = useParams();
 
     const saveOrUpdateEmployee = (e) => {
         e.preventDefault();
 
-        const employee = {firstName, lastName, emailId}
+        const employee = {name, username, password}
 
         if(id){
             EmployeeService.updateEmployee(id, employee).then((response) => {
@@ -39,9 +39,9 @@ const AddEmployeeComponent = () => {
     useEffect(() => {
 
         EmployeeService.getEmployeeById(id).then((response) =>{
-            setFirstName(response.data.firstName)
-            setLastName(response.data.lastName)
-            setEmailId(response.data.emailId)
+            setName(response.data.name)
+            setUsername(response.data.username)
+            setPassword(response.data.password)
         }).catch(error => {
             console.log(error)
         })
@@ -72,10 +72,10 @@ const AddEmployeeComponent = () => {
                                     <input
                                         type = "text"
                                         placeholder = "Enter first name"
-                                        name = "firstName"
+                                        name = "name"
                                         className = "form-control"
-                                        value = {firstName}
-                                        onChange = {(e) => setFirstName(e.target.value)}
+                                        value = {name}
+                                        onChange = {(e) => setName(e.target.value)}
                                     >
                                     </input>
                                 </div>
@@ -85,10 +85,10 @@ const AddEmployeeComponent = () => {
                                     <input
                                         type = "text"
                                         placeholder = "Enter last name"
-                                        name = "lastName"
+                                        name = "username"
                                         className = "form-control"
-                                        value = {lastName}
-                                        onChange = {(e) => setLastName(e.target.value)}
+                                        value = {username}
+                                        onChange = {(e) => setUsername(e.target.value)}
                                     >
                                     </input>
                                 </div>
@@ -96,12 +96,12 @@ const AddEmployeeComponent = () => {
                                 <div className = "form-group mb-2">
                                     <label className = "form-label"> Email Id :</label>
                                     <input
-                                        type = "email"
+                                        type = "password"
                                         placeholder = "Enter email Id"
-                                        name = "emailId"
+                                        name = "password"
                                         className = "form-control"
-                                        value = {emailId}
-                                        onChange = {(e) => setEmailId(e.target.value)}
+                                        value = {password}
+                                        onChange = {(e) => setPassword(e.target.value)}
                                     >
                                     </input>
                                 </div>
