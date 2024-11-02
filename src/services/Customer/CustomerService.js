@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-const Customer_BASE_REST_API_URL = process.env.API_CUST || 'http://localhost:8080/api/v1/customer';
+const Customer_BASE_REST_API_URL = 'https://libmanagement-backend-production.up.railway.app/api/v1/customer';
 
+// const Customer_BASE_REST_API_URL = 'http://localhost:8080/api/v1/customer'
 
 class CustomerService{
 
