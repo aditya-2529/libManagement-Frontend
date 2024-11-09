@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const Customer_BASE_REST_API_URL = 'https://libmanagement-backend-production.up.railway.app/api/v1/customer';
+const Customer_BASE_REST_API_URL = 'https://library-management-system-latest.onrender.com/api/v1/customer';
 
 // const Customer_BASE_REST_API_URL = 'http://localhost:8080/api/v1/customer'
 
