@@ -14,35 +14,44 @@ export default function Login() {
   //   getDetails();
   // },[])
 
-  function getDetailsEmp(username){
-    EmployeeService.getUserName(username).then((res) => {
+  const getDetailsEmp = async(username) => {
+    await EmployeeService.getUserName(username).then((res) => {
       
       setDetails(res.data);
     }).catch((e) => console.log(e));
   }
-  function getDetailsCus(username){
-    CustomerService.getCustomerName(username).then((res) => {
+  const getDetailsCus = async(username) => {
+    await CustomerService.getCustomerName(username).then((res) => {
       
       setDetails(res.data);
     }).catch((e) => console.log(e));
   }
-  function val(e){
+  const val = async(e) => {
     e.preventDefault();
     if(username === 'admin' && password === '123'){
       alert('Login Successfull');
+      localStorage.setItem('USER_STATE',true)
       nav('/admin');
     }
     else if(username[0].toLocaleLowerCase() === "c"){
-      getDetailsCus(username)
+      await getDetailsCus(username)
       console.log(details);
-      if(details.id !== undefined)
+      if(details.id !== undefined){
+        localStorage.setItem('USER_STATE',true)
         nav('/customer/'+details.id)
+
+        
+      }
     }
     else if(username[0].toLocaleLowerCase() === "e"){
-      getDetailsEmp(username)
+      await getDetailsEmp(username)
       console.log(details);
-      if(details.id !== undefined)
+      if(details.id !== undefined){
+        localStorage.setItem('USER_STATE',true)
         nav('/employee/'+details.id)
+
+        
+      }
     }
     else{
       alert('Invalid Credentials')

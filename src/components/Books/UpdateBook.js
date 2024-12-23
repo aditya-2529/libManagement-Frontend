@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import BooksService from '../../services/Books/BooksService';
 
 export default function UpdateBook() {
-    const {id} = useParams();
+    const {cid, id} = useParams();
     const [oldData, setOldData] = useState([]);
     const [name, setName] = useState('');
     const [title, setTitle] = useState('');
@@ -12,6 +12,7 @@ export default function UpdateBook() {
     useEffect(() => {
         getDetail();
     },[])
+
     const getDetail = () => {
         BooksService.getBooksById(id).then((res) => {
             setOldData(res.data);
@@ -56,7 +57,7 @@ export default function UpdateBook() {
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <button type="submit" className="btn btn-primary" onClick={(e) => {validateBook(e)}}>Submit</button>
-                <button type="submit" className="btn btn-primary" onClick={(e) => {nav('/')}}>Cancel</button>
+                <button type="submit" className="btn btn-primary" onClick={(e) => {nav('/employee/'+cid+'/mBooks')}}>Cancel</button>
             </form>
         </div>
         </div>

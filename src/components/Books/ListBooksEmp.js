@@ -8,11 +8,11 @@ export default function ListBooksEmp() {
     const {id} = useParams();
 
     useEffect(() => {
-        getBooks();
+        getBooks(id);
     },[])
-    const getBooks = () => {
-        BooksService.getAllBooks().then((res) => {
-            setBooks(res.data);
+    const getBooks = (id) => {
+        BooksService.fd(id).then((res) => {
+            setBooks([res.data]);
         }).catch((e) => console.log(e));
     }
     const revoke = (id) => {
@@ -29,7 +29,7 @@ export default function ListBooksEmp() {
     }
   return (
     <div className = "container">
-            <h2 className = "text-center"> List Employees </h2>
+            <h2 className = "text-center"> List Books </h2>
             <table className="table table-bordered table-striped">
                 <thead>
                     <tr>

@@ -13,6 +13,7 @@ import Books from './components/Books/Books';
 import ListBook from './components/Books/ListBook';
 import ListBooksEmp from './components/Books/ListBooksEmp';
 import UpdateBook from './components/Books/UpdateBook';
+import RegisterEmp from './components/RegisterEmp';
 
 
 function App() {
@@ -28,9 +29,10 @@ function App() {
               <Route path="/employee/:id/books" element={<Books/>}></Route>
               <Route path='/customer/:id' element={<ListBook/>}></Route>
               <Route path='/employee/:id/mbooks' element={<ListBooksEmp />}></Route>
-              <Route path='/employee/:id/edit-book/:id' element={<UpdateBook />}></Route>
+              <Route path='/employee/:cid/edit-book/:id' element={<UpdateBook />}></Route>
               <Route path='/login' element={<Login/>}></Route>
-              <Route path='/register' element={<Register/>}></Route>
+              <Route path='/registercust' element={<Register/>}></Route>
+              <Route path='/registeremp' element={<RegisterEmp/>}></Route>
               <Route path='/admin' element={<Admin/>}></Route>
               <Route path = "/add-employee" element={<AddEmployeeComponent/>} ></Route>
               <Route path = "/edit-employee/:id" element={<AddEmployeeComponent/>}></Route>
