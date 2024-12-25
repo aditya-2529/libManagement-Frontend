@@ -30,8 +30,8 @@ class BooksService{
         return axios.put(Books_BASE_REST_API_URL + '/' +BooksId, Books);
     }
 
-    deleteBook(BooksId,empid){
-        return axios.delete(Books_BASE_REST_API_URL + '/' + BooksId);
+    deleteBook(BooksId,name){
+        return axios.delete(Books_BASE_REST_API_URL + '/' + BooksId+'/'+name);
     }
 
     up(BooksId){

@@ -16,27 +16,45 @@ import UpdateBook from './components/Books/UpdateBook';
 import RegisterEmp from './components/RegisterEmp';
 
 
+
+export function AuthRoute() {
+  return(
+      <Routes>
+      <Route path = "/employees" element={<ListEmployeeComponent/>}></Route>
+      <Route path="/employee/:id" element={<Employee/>}></Route>
+      <Route path="/employee/:id/books" element={<Books/>}></Route>
+      <Route path='/customer/:id' element={<ListBook/>}></Route>
+      <Route path='/employee/:id/mbooks' element={<ListBooksEmp />}></Route>
+      <Route path='/employee/:cid/edit-book/:id' element={<UpdateBook />}></Route>
+      <Route path='/admin' element={<Admin/>}></Route>
+      <Route path = "/add-employee" element={<AddEmployeeComponent/>} ></Route>
+      <Route path = "/edit-employee/:id" element={<AddEmployeeComponent/>}></Route>
+      </Routes>
+  )
+}
+export function NotAuthRoute(){
+  return(
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/login' element={<Login/>}></Route>
+      <Route path='/registercust' element={<Register/>}></Route>
+      <Route path='/registeremp' element={<RegisterEmp/>}></Route>
+      
+    </Routes>
+  )
+}
 function App() {
+  
+var isLogged = localStorage.getItem('USER_STATE')
   return (
     <div>
       <Router>
         <HeaderComponent />
         <div className= "container">
-          <Routes>
-              <Route exact path = "/" element={<Home />}></Route>
-              <Route path = "/employees" element={<ListEmployeeComponent/>}></Route>
-              <Route path="/employee/:id" element={<Employee/>}></Route>
-              <Route path="/employee/:id/books" element={<Books/>}></Route>
-              <Route path='/customer/:id' element={<ListBook/>}></Route>
-              <Route path='/employee/:id/mbooks' element={<ListBooksEmp />}></Route>
-              <Route path='/employee/:cid/edit-book/:id' element={<UpdateBook />}></Route>
-              <Route path='/login' element={<Login/>}></Route>
-              <Route path='/registercust' element={<Register/>}></Route>
-              <Route path='/registeremp' element={<RegisterEmp/>}></Route>
-              <Route path='/admin' element={<Admin/>}></Route>
-              <Route path = "/add-employee" element={<AddEmployeeComponent/>} ></Route>
-              <Route path = "/edit-employee/:id" element={<AddEmployeeComponent/>}></Route>
-          </Routes>
+          
+    {/* <Routes> */}
+          {isLogged==='true' ? (<AuthRoute/>) : (<NotAuthRoute/>)}
+          {/* </Routes> */}
         </div>
         <FooterComponent />
       </Router>

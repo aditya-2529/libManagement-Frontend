@@ -12,18 +12,16 @@ export default function ListBooksEmp() {
     },[])
     const getBooks = (id) => {
         BooksService.fd(id).then((res) => {
-            setBooks([res.data]);
+            setBooks(res.data);
         }).catch((e) => console.log(e));
     }
-    const revoke = (id) => {
+    const revoke = (id,empid) => {
         BooksService.up(id).then((res) => {
-            console.log(res.data);
-            getBooks();
+            getBooks(empid);
         }).catch((e) => console.log(e));
     }
-    const deleteBook = (id) => {
-        BooksService.deleteBook(id).then((res) => {
-            console.log(res.data);
+    const deleteBook = (id,name) => {
+        BooksService.deleteBook(id,name).then((res) => {
             getBooks(id);
         }).catch((e) => console.log(e));
     }
@@ -53,9 +51,9 @@ export default function ListBooksEmp() {
                                 <td>{book.custid}</td>
                                 <td>
                                     <Link className="btn btn-info" to={`/employee/${id}/edit-book/${book.id}`}>Update</Link>
-                                    {book.custid && <button className = "btn btn-danger" style = {{marginLeft:"10px"}} onClick={()=>{revoke(book.id)}}> Revoke</button>}
+                                    {book.custid && <button className = "btn btn-danger" style = {{marginLeft:"10px"}} onClick={()=>{revoke(book.id,book.empid)}}> Revoke</button>}
                                     {/* <button className = "btn btn-info" style = {{marginLeft:"10px"}} onClick={()=>{}}> Update</button> */}
-                                    <button className = "btn btn-danger" style = {{marginLeft:"10px"}} onClick={()=>{deleteBook(book.empid)}}> Delete</button>
+                                    <button className = "btn btn-danger" style = {{marginLeft:"10px"}} onClick={()=>{deleteBook(book.empid,book.name)}}> Delete</button>
                                 </td>
                             </tr>
                         )

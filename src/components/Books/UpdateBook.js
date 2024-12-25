@@ -34,8 +34,8 @@ export default function UpdateBook() {
             if(empid !== null)
             BooksService.updateBooks(id,book).then((res) => {
                 // console.log(res.data);
+                nav('/employee/'+cid+'/mBooks');
                 getDetail();
-                // nav('/')
                 
             }).catch((e) => console.log(e)); 
         }

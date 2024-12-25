@@ -51,6 +51,8 @@ export default function ListBook() {
                             <Dropdown.Item onClick={() => {
                                 BooksService.getBooksCategory(book.category).then((res) => {
                                     data = res.data;
+                                    setOBooks(data);
+                                    console.log(obooks);
                                 }).catch((e) => console.log(e))
                             }}>
                                 {book.category}
