@@ -11,6 +11,10 @@ class BooksService{
         return axios.get(Books_BASE_REST_API_URL)
     }
 
+    getBooksCategory(category){
+        return axios.get(Books_BASE_REST_API_URL+'/filter/'+category)
+    }
+
     createBooks(Books){
         return axios.post(Books_BASE_REST_API_URL, Books)
     }
@@ -26,7 +30,7 @@ class BooksService{
         return axios.put(Books_BASE_REST_API_URL + '/' +BooksId, Books);
     }
 
-    deleteBooks(BooksId){
+    deleteBook(BooksId,empid){
         return axios.delete(Books_BASE_REST_API_URL + '/' + BooksId);
     }
 

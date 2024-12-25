@@ -24,7 +24,7 @@ export default function ListBooksEmp() {
     const deleteBook = (id) => {
         BooksService.deleteBook(id).then((res) => {
             console.log(res.data);
-            getBooks();
+            getBooks(id);
         }).catch((e) => console.log(e));
     }
   return (
@@ -53,9 +53,9 @@ export default function ListBooksEmp() {
                                 <td>{book.custid}</td>
                                 <td>
                                     <Link className="btn btn-info" to={`/employee/${id}/edit-book/${book.id}`}>Update</Link>
-                                    <button className = "btn btn-danger" style = {{marginLeft:"10px"}} onClick={()=>{revoke(book.id)}}> Revoke</button>
+                                    {book.custid && <button className = "btn btn-danger" style = {{marginLeft:"10px"}} onClick={()=>{revoke(book.id)}}> Revoke</button>}
                                     {/* <button className = "btn btn-info" style = {{marginLeft:"10px"}} onClick={()=>{}}> Update</button> */}
-                                    <button className = "btn btn-danger" style = {{marginLeft:"10px"}} onClick={()=>{deleteBook(book.id)}}> Delete</button>
+                                    <button className = "btn btn-danger" style = {{marginLeft:"10px"}} onClick={()=>{deleteBook(book.empid)}}> Delete</button>
                                 </td>
                             </tr>
                         )

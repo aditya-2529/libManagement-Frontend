@@ -10,6 +10,9 @@ class FileService{
     getBooks(fileName){
         return axios.get(FILE_BASE_REST_API_URLL+'/downloadFile/'+fileName)
     }
+    getAllBooksName(){
+        return axios.get(FILE_BASE_REST_API_URLL)
+    }
     createBook(formData,id){
         return axios.post(FILE_BASE_REST_API_URLL+'/uploadFile/'+id,formData)
     }
