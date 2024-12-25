@@ -77,7 +77,7 @@ export default function ListBook() {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.length === 0 ? 
+                    {obooks.length === 0 ? 
                         books.map(
                             book =>
                             {
