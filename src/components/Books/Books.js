@@ -51,7 +51,7 @@ export default function Books() {
       //Adding files to the formdata 
       formData.append("file", fileName);
       // console.log(formData)
-      FileService.createBook(formData,id).then((res)=>{console.log(res)}).catch((e)=>console.log(e))
+      FileService.createBook(formData,id).then((res)=>{alert("File uploaded!!");console.log(res)}).catch((e)=>console.log(e))
        // Catch errors if any 
     } 
 
